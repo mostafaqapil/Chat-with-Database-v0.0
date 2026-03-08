@@ -259,7 +259,7 @@ Reply with ONLY this JSON, nothing else:
 or
 {{"valid": false, "reason": "one sentence explaining what is missing"}}"""
 
-    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.0, max_tokens=100)
+    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.3, max_tokens=100)
     if err or not raw:
         return True, ""   # fail open
 
@@ -290,7 +290,7 @@ OUTPUT RULES:
 
 USER REQUEST: {user_text}"""
 
-    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.0)
+    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.3)
     if err:
         return None, err
     return clean_sql(raw), None
@@ -305,7 +305,7 @@ COLUMNS: {", ".join(columns)}
 BROKEN : {broken_sql}
 ERROR  : {error}"""
 
-    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.0)
+    raw, err = call_llm([{"role": "user", "content": prompt}], temperature=0.3)
     if err:
         return None, err
     return clean_sql(raw), None
